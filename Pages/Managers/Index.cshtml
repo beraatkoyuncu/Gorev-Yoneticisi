@@ -1,0 +1,54 @@
+﻿@page
+@model TaskManager.Pages.Managers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Aktiviteler</h4>
+
+<p>
+    <a asp-page="Create">Yeni Aktivite</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].ActivityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].ReleaseTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].ActivityExplanation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Manager) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityExplanation)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Düzenle</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Detaylar</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
